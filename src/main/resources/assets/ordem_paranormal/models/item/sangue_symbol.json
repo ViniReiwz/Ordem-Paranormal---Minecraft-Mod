@@ -2,6 +2,6 @@
     "parent": "item/generated",
     "textures":
     {
-        "layer0": "ordem_paranormal:item/sangue"
+        "layer0": "ordem_paranormal:item/sangue_symbol"
     }
 }

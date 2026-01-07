@@ -35,10 +35,12 @@ public class OrdemParanormal
     // Adiciona o item à uma tabela de items no modo criativo (Tabelas padrão do mine)
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
-        // Adiciona o SANGUE na tabela de ingredientes
+        
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS)
-        {
-            event.accept(OrdemItems.SANGUE);
+        {   
+            // Adiciona o simbolo de sangue e de energia (porcamente)
+            event.accept(OrdemItems.sangue_symbol);
+            event.accept(OrdemItems.energia_symbol);
         }
     }
 }
