@@ -22,7 +22,7 @@ public class OrdemItems
      * passamos o id do mod para o namespace, assim um item qualquer xxxxx será referenciado como:
      * ordem_paranormal:xxxxx
      */
-    public static final DeferredRegister<Item> ORDEMITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, OrdemParanormal.MOD_ID);
+    public static final DeferredRegister<Item> ORDEM_ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, OrdemParanormal.MOD_ID);
 
     /*
      * Adiciona o item 'sangue' para o jogo logicamente.
@@ -32,10 +32,13 @@ public class OrdemItems
      * As características como textura, nom inGame, entre outros são definidos em um .json na pastas resources/item
      * Todos os aspectos referentes à qualquer item devem referenciá-lo pelo nome apssado como parametro no register, no caso 'sangue'
      */
-    public static final RegistryObject<Item> SANGUE = ORDEMITEMS.register("sangue", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> sangue_symbol = ORDEM_ITEMS.register("sangue_symbol", () -> new Item(new Item.Properties()));
+    
+    // Adicionando outro item qualquer
+    public static final RegistryObject<Item> energia_symbol = ORDEM_ITEMS.register("energia_symbol", () -> new Item(new Item.Properties()));
 
     public static void register(IEventBus eventBus)
     {
-        ORDEMITEMS.register(eventBus);
+        ORDEM_ITEMS.register(eventBus);
     }
 }
