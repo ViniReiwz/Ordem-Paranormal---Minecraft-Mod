@@ -1,8 +1,8 @@
 package com.example.greisvini.ordem_paranormal;
 
+import com.example.greisvini.ordem_paranormal.items.OrdemItemTab;
 import com.example.greisvini.ordem_paranormal.items.OrdemItems;
 
-import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -18,6 +18,10 @@ public class OrdemParanormal
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        // Inicializa a tabela do modo criativo
+        OrdemItemTab.register(modEventBus);
+
+        // Inicializa os items do mod
         OrdemItems.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
@@ -36,11 +40,11 @@ public class OrdemParanormal
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
         
-        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS)
-        {   
-            // Adiciona o simbolo de sangue e de energia (porcamente)
-            event.accept(OrdemItems.sangue_symbol);
-            event.accept(OrdemItems.energia_symbol);
-        }
+        // if (event.getTabKey() == CreativeModeTabs.INGREDIENTS)
+        // {   
+        //     // Adiciona o simbolo de sangue e de energia (porcamente)
+        //     event.accept(OrdemItems.sangue_symbol);
+        //     event.accept(OrdemItems.energia_symbol);
+        // }
     }
 }
