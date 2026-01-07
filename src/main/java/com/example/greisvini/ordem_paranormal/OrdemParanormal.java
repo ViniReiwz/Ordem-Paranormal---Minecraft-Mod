@@ -4,7 +4,7 @@ import net.minecraftforge.fml.common.Mod;
 @Mod("ordem_paranormal")
 public class OrdemParanormal 
 {
-    OrdemParanormal()
+    public OrdemParanormal()
     {
 
     }
