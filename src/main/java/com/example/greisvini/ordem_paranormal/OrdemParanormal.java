@@ -1,5 +1,6 @@
 package com.example.greisvini.ordem_paranormal;
 
+import com.example.greisvini.ordem_paranormal.blocks.OrdemBlocos;
 import com.example.greisvini.ordem_paranormal.items.OrdemItemTab;
 import com.example.greisvini.ordem_paranormal.items.OrdemItems;
 
@@ -23,6 +24,9 @@ public class OrdemParanormal
 
         // Inicializa os items do mod
         OrdemItems.register(modEventBus);
+
+        // Inicializa os blocos do mod
+        OrdemBlocos.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 

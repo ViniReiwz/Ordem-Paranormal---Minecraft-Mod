@@ -1,6 +1,9 @@
 {
+    "creative_tab.ordem_tab": "Ordem Paranormal",
+
     "item.ordem_paranormal.sangue_symbol": "Sangue",
     "item.ordem_paranormal.energia_symbol": "Energia",
-    "creative_tab.ordem_tab": "Ordem Paranormal"
+
+    "block.ordem_paranormal.madeira_ensanguentada": "Madeira Ensanguentada"
 
 }
