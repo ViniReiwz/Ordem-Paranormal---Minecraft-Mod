@@ -1,6 +1,7 @@
 package com.example.greisvini.ordem_paranormal.items;
 
 import com.example.greisvini.ordem_paranormal.OrdemParanormal;
+import com.example.greisvini.ordem_paranormal.blocks.OrdemBlocos;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -31,6 +32,7 @@ public class OrdemItemTab
     .displayItems((pParameters,pOutput) -> {
         pOutput.accept(OrdemItems.sangue_symbol.get());
         pOutput.accept(OrdemItems.energia_symbol.get());
+        pOutput.accept(OrdemBlocos.madeira_ensaguentada.get());
     })
     .build());
 
