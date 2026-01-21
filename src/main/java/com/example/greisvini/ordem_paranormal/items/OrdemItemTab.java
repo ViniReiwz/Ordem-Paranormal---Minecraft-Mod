@@ -33,6 +33,7 @@ public class OrdemItemTab
         pOutput.accept(OrdemItems.sangue_symbol.get());
         pOutput.accept(OrdemItems.energia_symbol.get());
         pOutput.accept(OrdemBlocos.madeira_ensaguentada.get());
+        pOutput.accept(OrdemItems.giz.get());
     })
     .build());
 

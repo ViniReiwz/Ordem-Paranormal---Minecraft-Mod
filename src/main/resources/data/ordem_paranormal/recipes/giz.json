@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "group": "ordem_paranormal",
+    "show_notification": true,
+    "pattern":
+    [
+        "B",
+        " B"
+    ],
+    "key":
+    {
+        "B": {"item": "minecraft:bone_meal"}
+    },
+    "result":
+    {
+        "item": "ordem_paranormal:giz",
+        "count": 1
+    }
+
+}

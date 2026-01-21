@@ -7,6 +7,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import com.example.greisvini.ordem_paranormal.items.custom.GizItem;
 
 public class OrdemItems 
 {
@@ -36,6 +37,8 @@ public class OrdemItems
     
     // Adicionando outro item qualquer
     public static final RegistryObject<Item> energia_symbol = ORDEM_ITEMS.register("energia_symbol", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<GizItem> giz = ORDEM_ITEMS.register("giz", () -> new GizItem(new Item.Properties().durability(1)));
 
     public static void register(IEventBus eventBus)
     {
