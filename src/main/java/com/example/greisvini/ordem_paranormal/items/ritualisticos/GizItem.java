@@ -1,7 +1,6 @@
-package com.example.greisvini.ordem_paranormal.items.custom;
+package com.example.greisvini.ordem_paranormal.items.ritualisticos;
 
-
-import com.example.greisvini.ordem_paranormal.blocks.OrdemBlocos;
+import com.example.greisvini.ordem_paranormal.utils.OrdemTags;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
@@ -33,23 +32,32 @@ public class GizItem extends Item
     {
         // Pega o level atual ('instância' do mundo, pelo que entendi)
         Level curr_level = uoContext.getLevel();
+        
+
 
         // Atua apenas no lado do servidor
         if(!curr_level.isClientSide())
         {
-            Player player = uoContext.getPlayer();
+            BlockPos middle_pos = uoContext.getClickedPos();
+            Player player = uoContext.getPlayer();  
+
+            if(curr_level.getBlockState(middle_pos).is(OrdemTags.Blocks.non_chalk_writeable))
+            {player.sendSystemMessage(Component.translatable("cannot.write.symbol"));}
+
             // verifica se o ambiente é valido para escrever o símbolo
-            if(isValidTranscendPlace(curr_level, uoContext.getClickedPos()))
+            else if(isValidTranscendPlace(curr_level, middle_pos))
             {   
                 // Mensagem placeholder para sucesso
                 player.sendSystemMessage(Component.literal("Local apto à transcendência :) !!"));
 
                 // Danifica o item e iforma o lado do cliente
                 player.getItemInHand(InteractionHand.MAIN_HAND).hurtAndBreak(1, player, p -> p.broadcastBreakEvent(InteractionHand.MAIN_HAND));
+
+                // drawTranscendSymbol(curr_level,uoContext.getClickedPos());
             }
 
             // Mensagem placeholder para erro
-            else{player.sendSystemMessage(Component.literal("Local inapto à transcendência :( !!"));}
+            else{player.sendSystemMessage(Component.literal("Uma voz sussurra em sua mente: Não é assim que se constrói um altar."));}
         }
 
         return InteractionResult.SUCCESS;
@@ -65,6 +73,8 @@ public class GizItem extends Item
     private static boolean isValidTranscendPlace(Level curr_level ,BlockPos middle_pos)
     {
         boolean is_valid_for_draw = true;
+
+        BlockState base = curr_level.getBlockState(middle_pos);
 
         // Percorre o grid 3x3 a partir da posição do bloco central
         for(int i = -1; i < 2; i++)
@@ -82,15 +92,21 @@ public class GizItem extends Item
 
 
                 // Transforma em falso caso não seja madeira ou esteja obstrupido acima
-                if(!curr_state.is(OrdemBlocos.madeira_ensaguentada.get()) || !above_state.isAir())
+                if(!curr_state.is(base.getBlock()) || !above_state.isAir())
                 {is_valid_for_draw = false; break;}
             }
 
             // Continua percorrendo o loop apenas se for verdadeiro
             if(!is_valid_for_draw){break;}
         }
-
+    
         return is_valid_for_draw;   
+    }
+
+    private static void drawTranscendSymbol(Level curr_level, BlockPos middle_pos)
+    {
+        // Desenha o ritual de transcender no chão
+        
     }
     
 }
