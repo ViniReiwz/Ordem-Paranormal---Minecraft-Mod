@@ -5,6 +5,8 @@
     "item.ordem_paranormal.energia_symbol": "Energia",
     "item.ordem_paranormal.giz": "Giz",
 
-    "block.ordem_paranormal.madeira_ensanguentada": "Madeira Ensanguentada"
+    "block.ordem_paranormal.madeira_ensanguentada": "Madeira Ensanguentada",
+
+    "cannot.write.symbol": "Não posso escrever nisso"
 
 }
