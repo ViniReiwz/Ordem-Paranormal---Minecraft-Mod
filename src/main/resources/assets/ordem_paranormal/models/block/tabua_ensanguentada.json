@@ -1,0 +1,7 @@
+{
+    "parent": "minecraft:block/cube_all",
+    "textures": 
+    {
+        "all": "ordem_paranormal:block/tabua_ensanguentada"
+    }
+}

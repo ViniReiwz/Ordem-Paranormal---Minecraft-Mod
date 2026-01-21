@@ -10,6 +10,8 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.LevelEvent;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.entity.player.Player;
 
@@ -53,7 +55,7 @@ public class GizItem extends Item
                 // Danifica o item e iforma o lado do cliente
                 player.getItemInHand(InteractionHand.MAIN_HAND).hurtAndBreak(1, player, p -> p.broadcastBreakEvent(InteractionHand.MAIN_HAND));
 
-                // drawTranscendSymbol(curr_level,uoContext.getClickedPos());
+                drawTranscendSymbol(curr_level,uoContext.getClickedPos());
             }
 
             // Mensagem placeholder para erro
@@ -107,6 +109,18 @@ public class GizItem extends Item
     {
         // Desenha o ritual de transcender no chão
         
+        BlockState base = curr_level.getBlockState(middle_pos);
+
+        for(int i = -1; i < 2; i++)
+        {
+            for(int j = -1; j < 2; j++)
+            {   
+                // Percorre todo o grid 3x3 com base na posição central
+                BlockPos curr_pos = new BlockPos(new Vec3i(middle_pos.getX() + j, middle_pos.getY(), middle_pos.getZ() + i));
+
+                curr_level.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, curr_pos, Block.getId(base));
+            }
+        }
     }
     
 }

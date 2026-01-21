@@ -22,25 +22,10 @@ public class OrdemBlocos
     public static final DeferredRegister<Block> ORDEM_BLOCOS = DeferredRegister.create(ForgeRegistries.BLOCKS,OrdemParanormal.MOD_ID);
 
     // Cria e já registra o bloco, copiando as características de madeira de carvalho
-    public static final RegistryObject<Block> madeira_ensaguentada = registerBlock("madeira_ensanguentada", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)));
+    public static final RegistryObject<Block> madeira_ensaguentada = registerBlock("madeira_ensanguentada", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD).strength(3f)));
 
-    public static final RegistryObject<Block> transcend_down_left = registerBlock("transcend_down_left", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)));
-
-    public static final RegistryObject<Block> transcend_down_center = registerBlock("transcend_down_center", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)));
-
-    public static final RegistryObject<Block> transcend_down_right = registerBlock("transcend_down_right", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)));
-
-    public static final RegistryObject<Block> transcend_middle_left = registerBlock("transcend_middle_left", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)));
-
-    public static final RegistryObject<Block> transcend_middle_center = registerBlock("transcend_middle_center", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)));
-
-    public static final RegistryObject<Block> transcend_middle_right = registerBlock("transcend_middle_right", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)));
-
-    public static final RegistryObject<Block> transcend_upper_left = registerBlock("transcend_upper_left", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)));
-
-    public static final RegistryObject<Block> transcend_upper_center = registerBlock("transcend_upper_center", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)));
-
-    public static final RegistryObject<Block> transcend_upper_right = registerBlock("transcend_upper_right", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)));
+    public static final RegistryObject<Block> tabua_ensaguentada = registerBlock("tabua_ensanguentada", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(2f)));
+   
 
     /*
      * Registra um bloco a partir de determinado supplier e também registra o item relacionado

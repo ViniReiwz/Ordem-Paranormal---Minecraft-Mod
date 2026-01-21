@@ -5,7 +5,8 @@
     "item.ordem_paranormal.energia_symbol": "Energy",
     "item.ordem_paranormal.giz": "Chalk",
 
-    "block.ordem_paranormal.madeira_ensanguentada": "Bloody Wood",
+    "block.ordem_paranormal.madeira_ensanguentada": "Blood Soaked Wood",
+    "block.ordem_paranormal.tabua_ensanguentada": "Blood Soaked Plank",
 
     "cannot.write.symbol": "Can't write on this."
 }

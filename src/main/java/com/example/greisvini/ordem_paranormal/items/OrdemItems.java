@@ -40,8 +40,6 @@ public class OrdemItems
 
     public static final RegistryObject<GizItem> giz = ORDEM_ITEMS.register("giz", () -> new GizItem(new Item.Properties().durability(1)));
 
-    public static final RegistryObject<Item> display_base = ORDEM_ITEMS.register("display_base", () -> new Item(new Item.Properties()));
-
     public static void register(IEventBus eventBus)
     {
         ORDEM_ITEMS.register(eventBus);

@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "building",
+    "group": "ordem_paranormal",
+    "show_notification": true,
+    "pattern":
+    [
+    
+        "M"
+    ],
+    "key":
+    {
+        "M": {"item": "ordem_paranormal:madeira_ensanguentada"}
+    },
+    "result":
+    {
+        "item": "ordem_paranormal:tabua_ensanguentada",
+        "count": 4
+    }
+
+}

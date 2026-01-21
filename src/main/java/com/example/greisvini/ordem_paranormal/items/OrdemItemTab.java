@@ -30,10 +30,13 @@ public class OrdemItemTab
     .icon(() -> new ItemStack(OrdemItems.sangue_symbol.get()))
     .title(Component.translatable("creative_tab.ordem_tab"))
     .displayItems((pParameters,pOutput) -> {
+
         pOutput.accept(OrdemItems.sangue_symbol.get());
         pOutput.accept(OrdemItems.energia_symbol.get());
-        pOutput.accept(OrdemBlocos.madeira_ensaguentada.get());
         pOutput.accept(OrdemItems.giz.get());
+
+        pOutput.accept(OrdemBlocos.madeira_ensaguentada.get());
+        pOutput.accept(OrdemBlocos.tabua_ensaguentada.get());
     })
     .build());
 
