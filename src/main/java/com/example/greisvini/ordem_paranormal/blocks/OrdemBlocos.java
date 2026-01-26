@@ -2,6 +2,7 @@ package com.example.greisvini.ordem_paranormal.blocks;
 
 
 import com.example.greisvini.ordem_paranormal.OrdemParanormal;
+import com.example.greisvini.ordem_paranormal.blocks.rituais.TranscendSymbol;
 import com.example.greisvini.ordem_paranormal.items.OrdemItems;
 
 import net.minecraft.world.item.BlockItem;
@@ -26,6 +27,7 @@ public class OrdemBlocos
 
     public static final RegistryObject<Block> tabua_ensaguentada = registerBlock("tabua_ensanguentada", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(2f)));
    
+    public static final RegistryObject<TranscendSymbol> transcend_symbol = registerBlock("transcend_symbol", () -> new TranscendSymbol());
 
     /*
      * Registra um bloco a partir de determinado supplier e também registra o item relacionado
