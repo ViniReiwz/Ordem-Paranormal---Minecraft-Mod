@@ -1,0 +1,26 @@
+{
+    "parent": "minecraft:block/block",
+    "render_type": "cutout",
+    "textures":
+    {
+        "top": "ordem_paranormal:block/transcend_lower_left",
+        "empty": "ordem_paranormal:block/empty",
+        "particle": "ordem_paranormal:block/transcend_lower_left"
+    },
+    "elements":
+    [
+        {
+            "from": [0,0,0],
+            "to": [16,0.1,16],
+            "faces":
+            {
+                "up": {"texture": "#top"},
+                "down": {"texture": "#top"},
+                "north": {"texture": "#empty"},
+                "south": {"texture": "#empty"},
+                "east": {"texture": "#empty"},
+                "west": {"texture": "#empty"}
+            }
+        }
+    ]
+}

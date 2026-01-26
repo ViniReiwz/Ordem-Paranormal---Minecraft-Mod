@@ -1,5 +1,7 @@
 package com.example.greisvini.ordem_paranormal.items.ritualisticos;
 
+import com.example.greisvini.ordem_paranormal.blocks.OrdemBlocos;
+import com.example.greisvini.ordem_paranormal.blocks.utils.BigRitualBlock;
 import com.example.greisvini.ordem_paranormal.utils.OrdemTags;
 
 import net.minecraft.core.BlockPos;
@@ -110,6 +112,7 @@ public class GizItem extends Item
         // Desenha o ritual de transcender no chão
         
         BlockState base = curr_level.getBlockState(middle_pos);
+        int grid_pos = 0;
 
         for(int i = -1; i < 2; i++)
         {
@@ -119,6 +122,13 @@ public class GizItem extends Item
                 BlockPos curr_pos = new BlockPos(new Vec3i(middle_pos.getX() + j, middle_pos.getY(), middle_pos.getZ() + i));
 
                 curr_level.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, curr_pos, Block.getId(base));
+                BlockState transcend_symbol = OrdemBlocos.transcend_symbol.get().defaultBlockState();
+                
+                transcend_symbol =transcend_symbol.setValue(BigRitualBlock.GRID_PARTS, grid_pos);
+
+                curr_level.setBlock(curr_pos.above(), transcend_symbol, 3);
+                
+                grid_pos++;
             }
         }
     }
