@@ -1,6 +1,7 @@
 package com.example.greisvini.ordem_paranormal.items;
 
 import com.example.greisvini.ordem_paranormal.OrdemParanormal;
+import com.example.greisvini.ordem_paranormal.items.comida.SopaCaoticaItem;
 import com.example.greisvini.ordem_paranormal.items.ritualisticos.GizItem;
 
 import net.minecraft.world.item.Item;
@@ -26,19 +27,21 @@ public class OrdemItems
     public static final DeferredRegister<Item> ORDEM_ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, OrdemParanormal.MOD_ID);
 
     /*
-     * Adiciona o item 'sangue' para o jogo logicamente.
-     * O item é um 'objeto registrativo', ou seja, pode ser registrado. SANGUE  nada mais é uma referencia à este objeto,
-     * registrado em ORDEMITEMS (Nossa lista de items do mod), com o nome sangue e instanciada como um item com as propriedades padrão
+     * Adicionando um item para o jogo logicamente.
+     * O item é um 'objeto registrativo', ou seja, pode ser registrado. o nome em letras maiúsculas (XXXX) nada mais é do que
+     * uma referencia à este objeto,
+     * registrado em ORDEMITEMS (Nossa lista de items do mod), com o nome passado no  primeiro parâmetro e instanciada como um item com as propriedades definidas no supplier (Item.Properties)
      * 
      * As características como textura, nom inGame, entre outros são definidos em um .json na pastas resources/item
-     * Todos os aspectos referentes à qualquer item devem referenciá-lo pelo nome apssado como parametro no register, no caso 'sangue'
+     * Todos os aspectos referentes à qualquer item devem referenciá-lo pelo nome dado como ao register parâmetro ('xxxx').
      */
-    public static final RegistryObject<Item> sangue_symbol = ORDEM_ITEMS.register("sangue_symbol", () -> new Item(new Item.Properties()));
     
-    // Adicionando outro item qualquer
-    public static final RegistryObject<Item> energia_symbol = ORDEM_ITEMS.register("energia_symbol", () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<GizItem> giz = ORDEM_ITEMS.register("giz", () -> new GizItem(new Item.Properties().durability(1)));
+
+    public static final RegistryObject<GizItem> GIZ = ORDEM_ITEMS.register("giz", () -> new GizItem(new Item.Properties().durability(1)));
+
+    // Item de comida têm de passar foodProperties
+    public static final RegistryObject<SopaCaoticaItem> SOPA_CAOTICA = ORDEM_ITEMS.register("sopa_caotica", () -> new SopaCaoticaItem(new Item.Properties().food(OrdemFoods.SOPA_CAOTICA)));
 
     public static void register(IEventBus eventBus)
     {

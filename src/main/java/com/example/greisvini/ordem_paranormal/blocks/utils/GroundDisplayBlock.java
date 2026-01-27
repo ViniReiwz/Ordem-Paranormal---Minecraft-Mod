@@ -28,6 +28,7 @@ public class GroundDisplayBlock extends Block
         );
     }
 
+    // Pega o shape do bloco, no caso a ideia [e de que o mesmo atue quase como uma textura, logo o seu eixo y é muito próximo ao chão, dando a ideia de 'plano'.
     @Override 
     public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext cCcontext) 
     {

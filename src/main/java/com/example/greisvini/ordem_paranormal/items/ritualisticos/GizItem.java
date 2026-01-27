@@ -122,7 +122,7 @@ public class GizItem extends Item
                 BlockPos curr_pos = new BlockPos(new Vec3i(middle_pos.getX() + j, middle_pos.getY(), middle_pos.getZ() + i));
 
                 curr_level.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, curr_pos, Block.getId(base));
-                BlockState transcend_symbol = OrdemBlocos.transcend_symbol.get().defaultBlockState();
+                BlockState transcend_symbol = OrdemBlocos.TRANSCEND_SYMBOL.get().defaultBlockState();
                 
                 transcend_symbol =transcend_symbol.setValue(BigRitualBlock.GRID_PARTS, grid_pos);
 

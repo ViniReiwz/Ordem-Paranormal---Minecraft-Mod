@@ -27,16 +27,16 @@ public class OrdemItemTab
      * o pOutput é justamente a saída de itens, ou seja a exibição deles com o .accept
      */
     public static final RegistryObject<CreativeModeTab> ordem_tab = ORDEM_TAB.register("ordem_tab", () -> CreativeModeTab.builder()
-    .icon(() -> new ItemStack(OrdemItems.sangue_symbol.get()))
+    .icon(() -> new ItemStack(OrdemBlocos.MADEIRA_ENSANGUENTADA.get()))
     .title(Component.translatable("creative_tab.ordem_tab"))
     .displayItems((pParameters,pOutput) -> {
 
-        pOutput.accept(OrdemItems.sangue_symbol.get());
-        pOutput.accept(OrdemItems.energia_symbol.get());
-        pOutput.accept(OrdemItems.giz.get());
+        pOutput.accept(OrdemItems.GIZ.get());
+        pOutput.accept(OrdemItems.SOPA_CAOTICA.get());
 
-        pOutput.accept(OrdemBlocos.madeira_ensaguentada.get());
-        pOutput.accept(OrdemBlocos.tabua_ensaguentada.get());
+        pOutput.accept(OrdemBlocos.MADEIRA_ENSANGUENTADA.get());
+        pOutput.accept(OrdemBlocos.TABUA_ENSANGUENTADA.get());
+        
     })
     .build());
 

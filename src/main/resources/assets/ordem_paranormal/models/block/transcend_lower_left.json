@@ -3,9 +3,9 @@
     "render_type": "cutout",
     "textures":
     {
-        "top": "ordem_paranormal:block/transcend_lower_left",
+        "top": "ordem_paranormal:block/transcend_symbol/transcend_lower_left",
         "empty": "ordem_paranormal:block/empty",
-        "particle": "ordem_paranormal:block/transcend_lower_left"
+        "particle": "ordem_paranormal:block/transcend_symbol/transcend_lower_left"
     },
     "elements":
     [

@@ -23,11 +23,11 @@ public class OrdemBlocos
     public static final DeferredRegister<Block> ORDEM_BLOCOS = DeferredRegister.create(ForgeRegistries.BLOCKS,OrdemParanormal.MOD_ID);
 
     // Cria e já registra o bloco, copiando as características de madeira de carvalho
-    public static final RegistryObject<Block> madeira_ensaguentada = registerBlock("madeira_ensanguentada", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD).strength(3f)));
+    public static final RegistryObject<Block> MADEIRA_ENSANGUENTADA = registerBlock("madeira_ensanguentada", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD).strength(3f)));
 
-    public static final RegistryObject<Block> tabua_ensaguentada = registerBlock("tabua_ensanguentada", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(2f)));
+    public static final RegistryObject<Block> TABUA_ENSANGUENTADA = registerBlock("tabua_ensanguentada", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(2f)));
    
-    public static final RegistryObject<TranscendSymbol> transcend_symbol = registerBlock("transcend_symbol", () -> new TranscendSymbol());
+    public static final RegistryObject<TranscendSymbol> TRANSCEND_SYMBOL = registerBlock("transcend_symbol", () -> new TranscendSymbol());
 
     /*
      * Registra um bloco a partir de determinado supplier e também registra o item relacionado
