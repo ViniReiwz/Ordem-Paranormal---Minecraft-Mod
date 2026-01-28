@@ -7,5 +7,8 @@
     "block.ordem_paranormal.madeira_ensanguentada": "Blood Soaked Wood",
     "block.ordem_paranormal.tabua_ensanguentada": "Blood Soaked Plank",
 
-    "cannot.write.symbol": "Can't write on this."
+    "cannot.write.symbol": "Can't write on this.",
+
+    "key.category.ordem_paranormal": "Paranormal Order",
+    "key.ordem_paranormal.cast_rituals": "Cast Selected Ritual"
 }
