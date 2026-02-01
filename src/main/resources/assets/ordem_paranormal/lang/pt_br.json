@@ -10,5 +10,9 @@
     "cannot.write.symbol": "Não posso escrever nisso.",
     
     "key.category.ordem_paranormal": "Ordem Paranormal",
-    "key.ordem_paranormal.cast_rituals": "Conjurar Ritual Selecionado"
+    "key.ordem_paranormal.cast_rituals": "Conjurar Ritual Selecionado",
+
+    "advancement.ordem_paranormal.root.title": "Ordem Paranormal",
+    "advancement.ordem_paranormal.draw_transcend.title": "Desenhe o ritual de transcender",
+    "advancement.ordem_paranormal.draw_transcend.description": "Use um giz para densehar o ritual de transcender pela primeira vez."
 }

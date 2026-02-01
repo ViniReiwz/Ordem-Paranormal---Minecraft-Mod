@@ -10,5 +10,9 @@
     "cannot.write.symbol": "Can't write on this.",
 
     "key.category.ordem_paranormal": "Paranormal Order",
-    "key.ordem_paranormal.cast_rituals": "Cast Selected Ritual"
+    "key.ordem_paranormal.cast_rituals": "Cast Selected Ritual",
+
+    "advancement.ordem_paranormal.root.title": "Paranormal Order",
+    "advancement.ordem_paranormal.draw_transcend.title": "Draw transcend ritual",
+    "advancement.ordem_paranormal.draw_transcend.description": "Use a chalk to write down the transcend ritual for the first time."
 }

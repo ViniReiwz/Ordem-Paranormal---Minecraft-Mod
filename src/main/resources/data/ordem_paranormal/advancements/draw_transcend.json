@@ -1,0 +1,32 @@
+{
+    "parent": "ordem_paranormal:root",
+    "display":
+    {
+        "icon": { "item": "ordem_paranormal:giz" },
+
+        "title": { "translate": "advancement.ordem_paranormal.draw_transcend.title" },
+        "description": { "translate": "advancement.ordem_paranormal.draw_transcend.description" },
+
+        "frame": "goal",
+
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+
+    "criteria":
+    {
+        "use_item":
+        {
+            "trigger": "minecraft:item_durability_changed",
+            "conditions": 
+            {
+                "item": 
+                {
+                    "items": ["ordem_paranormal:giz"]
+                }
+            }
+        }
+    }
+
+}

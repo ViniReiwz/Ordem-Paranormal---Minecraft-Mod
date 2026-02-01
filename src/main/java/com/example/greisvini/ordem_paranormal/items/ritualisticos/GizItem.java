@@ -46,25 +46,30 @@ public class GizItem extends Item
             Player player = uoContext.getPlayer();  
 
             if(curr_level.getBlockState(middle_pos).is(OrdemTags.Blocks.non_chalk_writeable))
-            {player.sendSystemMessage(Component.translatable("cannot.write.symbol"));}
+            {
+                player.sendSystemMessage(Component.translatable("cannot.write.symbol"));
+                return InteractionResult.FAIL;
+            }
 
             // verifica se o ambiente é valido para escrever o símbolo
             else if(isValidTranscendPlace(curr_level, middle_pos))
-            {   
-                // Mensagem placeholder para sucesso
-                player.sendSystemMessage(Component.literal("Local apto à transcendência :) !!"));
-
-                // Danifica o item e iforma o lado do cliente
+            {
+                // Danifica o item e informa o lado do cliente
                 player.getItemInHand(InteractionHand.MAIN_HAND).hurtAndBreak(1, player, p -> p.broadcastBreakEvent(InteractionHand.MAIN_HAND));
 
                 drawTranscendSymbol(curr_level,uoContext.getClickedPos());
+                return InteractionResult.CONSUME;
             }
 
             // Mensagem placeholder para erro
-            else{player.sendSystemMessage(Component.literal("Uma voz sussurra em sua mente: Não é assim que se constrói um altar."));}
+            else
+            {
+                player.sendSystemMessage(Component.literal("Uma voz sussurra em sua mente: Não é assim que se constrói um altar."));
+                return InteractionResult.FAIL;
+            }
         }
 
-        return InteractionResult.SUCCESS;
+        return InteractionResult.sidedSuccess(curr_level.isClientSide());
     }
 
     /*
