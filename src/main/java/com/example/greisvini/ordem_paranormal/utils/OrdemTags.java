@@ -12,7 +12,7 @@ public class OrdemTags
     public static class Blocks
     {
 
-        public static TagKey<Block> non_chalk_writeable = createTag("non_chalk_writeable");
+        public static TagKey<Block> NON_CHALK_WRITEABLE = createTag("non_chalk_writeable");
 
 
         private static TagKey<Block> createTag(String name)

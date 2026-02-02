@@ -45,7 +45,7 @@ public class GizItem extends Item
             BlockPos middle_pos = uoContext.getClickedPos();
             Player player = uoContext.getPlayer();  
 
-            if(curr_level.getBlockState(middle_pos).is(OrdemTags.Blocks.non_chalk_writeable))
+            if(curr_level.getBlockState(middle_pos).is(OrdemTags.Blocks.NON_CHALK_WRITEABLE))
             {
                 player.sendSystemMessage(Component.translatable("cannot.write.symbol"));
                 return InteractionResult.FAIL;

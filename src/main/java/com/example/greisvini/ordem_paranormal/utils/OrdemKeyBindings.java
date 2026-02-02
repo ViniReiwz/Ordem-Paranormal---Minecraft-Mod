@@ -26,7 +26,6 @@ public class OrdemKeyBindings
         (nome/função (String),  Contexto em que é pressionada , Tipo do input (mouse ou teclado), Código da tecla(int),
         Categoria pertencente (String))
     */ 
-    
     public static final KeyMapping CAST_KEY = new KeyMapping(KEY_CAST_RITUALS, KeyConflictContext.IN_GAME,InputConstants.Type.KEYSYM,GLFW.GLFW_KEY_C,KEY_CATEGORY_ORDEM);
     // ------------------------------------
 }
