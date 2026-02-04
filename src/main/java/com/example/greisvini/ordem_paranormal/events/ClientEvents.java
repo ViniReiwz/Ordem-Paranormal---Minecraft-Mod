@@ -1,10 +1,10 @@
 package com.example.greisvini.ordem_paranormal.events;
 
 import com.example.greisvini.ordem_paranormal.OrdemParanormal;
+import com.example.greisvini.ordem_paranormal.network.OrdemMessages;
+import com.example.greisvini.ordem_paranormal.network.packets.ExampleC2SPacket;
 import com.example.greisvini.ordem_paranormal.utils.OrdemKeyBindings;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.network.chat.Component;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
@@ -24,7 +24,7 @@ public class ClientEvents
         {
             if(OrdemKeyBindings.CAST_KEY.consumeClick())
             {
-                Minecraft.getInstance().player.sendSystemMessage(Component.literal("placeholder de conjuração !!!"));
+                OrdemMessages.sendToServer(new ExampleC2SPacket());
             }
         }
     }

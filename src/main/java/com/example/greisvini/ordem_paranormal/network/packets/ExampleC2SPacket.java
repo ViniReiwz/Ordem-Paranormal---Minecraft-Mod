@@ -1,7 +1,7 @@
 package com.example.greisvini.ordem_paranormal.network.packets;
 
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.server.level.ServerLevel;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraftforge.network.NetworkEvent;
@@ -35,6 +35,16 @@ public class ExampleC2SPacket
         {
             // Tudo feito aqui está no servidor !!!
             ServerPlayer player = context.getSender();
+
+            player.getCapability(AtributosProvider.ATRIBUTOS).ifPresent(attr ->
+            {
+                attr.setFOR(attr.getFOR() + 1);
+                player.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(attr.getFOR());
+                player.sendSystemMessage(Component.literal("DANO BASE: " + player.getAttributeBaseValue(Attributes.ATTACK_DAMAGE)));
+
+                player.sendSystemMessage(Component.literal("FOR: " + attr.getFOR()));
+            
+            });;
 
         });
 
