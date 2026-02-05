@@ -1,7 +1,7 @@
 package com.example.greisvini.ordem_paranormal.network;
 
 import com.example.greisvini.ordem_paranormal.OrdemParanormal;
-import com.example.greisvini.ordem_paranormal.network.packets.ExampleC2SPacket;
+import com.example.greisvini.ordem_paranormal.network.packets.ChangeAtribC2SPacket;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.network.NetworkDirection;
@@ -32,10 +32,11 @@ public class OrdemMessages
 
         INSTANCE = net;
 
-        net.messageBuilder(ExampleC2SPacket.class, id(),NetworkDirection.PLAY_TO_SERVER)
-        .decoder(ExampleC2SPacket::new)
-        .encoder(ExampleC2SPacket::toBytes)
-        .consumerMainThread(ExampleC2SPacket::handle)
+        // Mensagem para mudar valor de atributo
+        net.messageBuilder(ChangeAtribC2SPacket.class, id(),NetworkDirection.PLAY_TO_SERVER)
+        .decoder(ChangeAtribC2SPacket::new)
+        .encoder(ChangeAtribC2SPacket::toBytes)
+        .consumerMainThread(ChangeAtribC2SPacket::handle)
         .add();
     }
 

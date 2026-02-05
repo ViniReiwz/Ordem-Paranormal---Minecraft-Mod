@@ -2,7 +2,7 @@ package com.example.greisvini.ordem_paranormal.events;
 
 import com.example.greisvini.ordem_paranormal.OrdemParanormal;
 import com.example.greisvini.ordem_paranormal.network.OrdemMessages;
-import com.example.greisvini.ordem_paranormal.network.packets.ExampleC2SPacket;
+import com.example.greisvini.ordem_paranormal.network.packets.ChangeAtribC2SPacket;
 import com.example.greisvini.ordem_paranormal.utils.OrdemKeyBindings;
 
 import net.minecraftforge.api.distmarker.Dist;
@@ -24,11 +24,13 @@ public class ClientEvents
         {
             if(OrdemKeyBindings.CAST_KEY.consumeClick())
             {
-                OrdemMessages.sendToServer(new ExampleC2SPacket());
+                // Envia a mensagem para aumentar um atributo (Placeholder para testar o sistema)
+                OrdemMessages.sendToServer(new ChangeAtribC2SPacket(1,"INT"));
             }
         }
     }
     
+    // Registra a keybind
     @Mod.EventBusSubscriber(modid = OrdemParanormal.MOD_ID,value = Dist.CLIENT,bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class ClientOrdemBusEvent
     {
