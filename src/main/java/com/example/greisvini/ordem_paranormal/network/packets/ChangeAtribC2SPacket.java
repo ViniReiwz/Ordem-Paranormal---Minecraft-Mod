@@ -1,14 +1,16 @@
 package com.example.greisvini.ordem_paranormal.network.packets;
 
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
+import com.example.greisvini.ordem_paranormal.capabilities.attributes.Atributos;
 import com.example.greisvini.ordem_paranormal.capabilities.attributes.AtributosProvider;
+import com.example.greisvini.ordem_paranormal.network.OrdemMessages;
 
 // Mensagem para mudar valor de atributo in-game
 public class ChangeAtribC2SPacket 
@@ -20,9 +22,6 @@ public class ChangeAtribC2SPacket
 
     public ChangeAtribC2SPacket(int val, String type)
     {
-        // Normaliza o valor entre 1 e -1, ou 0 (impossível ser, mas vale)
-        if(val != 0){val = val/Math.abs(val);}
-
         this.value = val;
         this.type = type;
     }
@@ -41,7 +40,7 @@ public class ChangeAtribC2SPacket
         buf.writeUtf(this.type);
     }
 
-    // Exeuta a operação
+    // Exeuta a operação no servidor
     public boolean handle(Supplier<NetworkEvent.Context> supplier)
     {
         NetworkEvent.Context context = supplier.get();
@@ -52,76 +51,64 @@ public class ChangeAtribC2SPacket
             ServerPlayer player = context.getSender();
             if(player == null){return;}
 
-            // Incremente em value o atributo passado em type
-
+            // Incremente em 'value' o atributo do tipo 'type'
             player.getCapability(AtributosProvider.ATRIBUTOS).ifPresent(attr ->
             {
-
-                int final_value = 0;
-                switch (this.type) 
+                int res = attr.get(type) + this.value;
+                if(res >= 0)
                 {
-                    case "FOR":
-                    {   
-                        int res = attr.getFOR() + this.value;
-
-                        if(res >= 0){attr.setFOR(res); final_value = res;}
-                        else{attr.setFOR(0);}
-
-                        player.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(attr.getFOR());
-
-                        break;
-                    }
-
-                    case "AGI":
-                    {
-                        int res = attr.getAGI() + this.value;
-
-                        if(res >= 0){attr.setAGI(res); final_value = res;}
-                        else{attr.setAGI(0);}
-
-                        break;
-                    }
-
-                    case "PRE":
-                    {
-                        int res = attr.getPRE() + this.value;
-
-                        if(res >= 0){attr.setPRE(res); final_value = res;}
-                        else{attr.setPRE(0);}
-
-                        break;
-                    }
-
-                    case "INT":
-                    {
-                        int res = attr.getINT() + this.value;
-
-                        if(res >= 0){attr.setINT(res); final_value = res;}
-                        else{attr.setINT(0);}
-
-                        break;
-                    }
-
-                    case "VIG":
-                    {
-                        int res = attr.getVIG() + this.value;
-
-                        if(res >= 0){attr.setVIG(res); final_value = res;}
-                        else{attr.setVIG(0);}
-
-                        break;
-                    }
-
-                    default:
-                        break;
+                    attr.set(res,this.type);
+                }
+                else
+                {
+                    attr.set(0,type);
+                    res = 0;
                 }
 
-                player.sendSystemMessage(Component.literal(this.type + ": " + final_value));
+                applyModifiers(player, attr);
+
+                OrdemMessages.sendToPlayer(new AtribSyncS2CPacket(res, type), player);
 
             });;
 
         });
 
+        // Confirma que o packet foi tratado
+        context.setPacketHandled(true);
         return true;
+    }
+
+    // Aplica todas as modificações permanentes relacionadas à todos os atributos
+    public static void applyModifiers(ServerPlayer player, Atributos attr)
+    {
+        // Aumenta a velocidade de movimento
+        if(player.getAttribute(Attributes.MOVEMENT_SPEED) != null)
+        {
+            double bonus = attr.get("AGI") * 0.1; // 10% de aumento de velocidade por ponto de agilidade
+
+            player.getAttribute(Attributes.MOVEMENT_SPEED).removePermanentModifier(Atributos.AGI_UUID);
+
+            player.getAttribute(Attributes.MOVEMENT_SPEED).addPermanentModifier(new AttributeModifier(Atributos.AGI_UUID,"mov_speed_bonus", bonus, AttributeModifier.Operation.MULTIPLY_BASE));
+        }
+
+        // Aumenta a velocidade de ataque
+        if(player.getAttribute(Attributes.ATTACK_SPEED) != null)
+        {
+            double bonus = attr.get("AGI") * 0.05; // 5% de aumento de velocidade por ponto de agilidade
+
+            player.getAttribute(Attributes.ATTACK_SPEED).removePermanentModifier(Atributos.AGI_UUID);
+
+            player.getAttribute(Attributes.ATTACK_SPEED).addPermanentModifier(new AttributeModifier(Atributos.AGI_UUID,"attack_speed_bonus", bonus, AttributeModifier.Operation.MULTIPLY_BASE));
+        }
+
+        // Aumenta o dano base
+        if(player.getAttribute(Attributes.ATTACK_DAMAGE) != null)
+        {
+            double bonus = attr.get("FOR") * 0.1; // 10% de aumento de dano por FOR
+
+            player.getAttribute(Attributes.ATTACK_DAMAGE).removePermanentModifier(Atributos.FOR_UUID);
+
+            player.getAttribute(Attributes.ATTACK_DAMAGE).addPermanentModifier(new AttributeModifier(Atributos.FOR_UUID,"attack_damagebonus", bonus, AttributeModifier.Operation.MULTIPLY_BASE));
+        }
     }
 }
