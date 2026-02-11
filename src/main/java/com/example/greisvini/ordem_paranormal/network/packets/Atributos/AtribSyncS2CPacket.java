@@ -1,4 +1,4 @@
-package com.example.greisvini.ordem_paranormal.network.packets;
+package com.example.greisvini.ordem_paranormal.network.packets.Atributos;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
