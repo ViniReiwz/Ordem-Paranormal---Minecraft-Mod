@@ -3,8 +3,6 @@ package com.example.greisvini.ordem_paranormal.network;
 import com.example.greisvini.ordem_paranormal.OrdemParanormal;
 import com.example.greisvini.ordem_paranormal.network.packets.Atributos.AtribSyncS2CPacket;
 import com.example.greisvini.ordem_paranormal.network.packets.Atributos.ChangeAtribC2SPacket;
-import com.example.greisvini.ordem_paranormal.network.packets.UI.OpenMenuReqC2SPacket;
-import com.example.greisvini.ordem_paranormal.network.packets.UI.OpenOrdemMenuS2CPacket;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.network.NetworkDirection;
@@ -47,20 +45,6 @@ public class OrdemMessages
         .decoder(AtribSyncS2CPacket::new)
         .encoder(AtribSyncS2CPacket::toBytes)
         .consumerMainThread(AtribSyncS2CPacket::handle)
-        .add();
-
-        // Envia requisição para abrir o menu
-        net.messageBuilder(OpenMenuReqC2SPacket.class, id(),NetworkDirection.PLAY_TO_SERVER)
-        .decoder(OpenMenuReqC2SPacket::new)
-        .encoder(OpenMenuReqC2SPacket::toBytes)
-        .consumerMainThread(OpenMenuReqC2SPacket::handle)
-        .add();
-
-        // Abre o menu principal do mod
-        net.messageBuilder(OpenOrdemMenuS2CPacket.class, id(),NetworkDirection.PLAY_TO_CLIENT)
-        .decoder(OpenOrdemMenuS2CPacket::new)
-        .encoder(OpenOrdemMenuS2CPacket::toBytes)
-        .consumerMainThread(OpenOrdemMenuS2CPacket::handle)
         .add();
     }
 

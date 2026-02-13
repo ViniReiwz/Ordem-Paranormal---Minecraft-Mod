@@ -2,11 +2,12 @@ package com.example.greisvini.ordem_paranormal.events;
 
 import com.example.greisvini.ordem_paranormal.OrdemParanormal;
 import com.example.greisvini.ordem_paranormal.capabilities.attributes.AtributosProvider;
+import com.example.greisvini.ordem_paranormal.client.UI.OrdemMainMenu;
 import com.example.greisvini.ordem_paranormal.network.OrdemMessages;
 import com.example.greisvini.ordem_paranormal.network.packets.Atributos.ChangeAtribC2SPacket;
-import com.example.greisvini.ordem_paranormal.network.packets.UI.OpenMenuReqC2SPacket;
 import com.example.greisvini.ordem_paranormal.utils.OrdemKeyBindings;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;
@@ -32,9 +33,10 @@ public class ClientEvents
                 OrdemMessages.sendToServer(new ChangeAtribC2SPacket(1,"FOR"));
             }
 
+            // Abre o menu do mod
             else if(OrdemKeyBindings.OPEN_MENU_KEY.consumeClick())
             {
-                OrdemMessages.sendToServer(new OpenMenuReqC2SPacket());
+                Minecraft.getInstance().setScreen(new OrdemMainMenu());
             }
         }
 

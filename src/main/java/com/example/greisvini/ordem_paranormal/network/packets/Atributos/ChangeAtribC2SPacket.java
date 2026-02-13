@@ -47,35 +47,40 @@ public class ChangeAtribC2SPacket
 
         context.enqueueWork(() -> 
         {
-            // Tudo feito aqui está no servidor !!!
-            ServerPlayer player = context.getSender();
-            if(player == null){return;}
-
-            // Incremente em 'value' o atributo do tipo 'type'
-            player.getCapability(AtributosProvider.ATRIBUTOS).ifPresent(attr ->
+            
+            if(context.getDirection().getReceptionSide().isServer())
             {
-                int res = attr.get(type) + this.value;
-                if(res >= 0)
+                // Tudo feito aqui está no servidor !!!
+                ServerPlayer player = context.getSender();
+                if(player == null){return;}
+
+                // Incremente em 'value' o atributo do tipo 'type'
+                player.getCapability(AtributosProvider.ATRIBUTOS).ifPresent(attr ->
                 {
-                    attr.set(res,this.type);
-                }
-                else
-                {
-                    attr.set(0,type);
-                    res = 0;
-                }
+                    int res = attr.get(type) + this.value;
+                    if(res >= 0)
+                    {
+                        attr.set(res,this.type);
+                    }
+                    else
+                    {
+                        attr.set(0,type);
+                        res = 0;
+                    }
 
-                applyModifiers(player, attr);
+                    applyModifiers(player, attr);
 
-                OrdemMessages.sendToPlayer(new AtribSyncS2CPacket(res, type), player);
+                    OrdemMessages.sendToPlayer(new AtribSyncS2CPacket(res, type), player);
 
-            });;
+                    // Confirma que o packet foi tratado
+                    context.setPacketHandled(true);
+                });;
+            }
 
+            else {context.setPacketHandled(false);}
         });
 
-        // Confirma que o packet foi tratado
-        context.setPacketHandled(true);
-        return true;
+        return context.getPacketHandled();
     }
 
     // Aplica todas as modificações permanentes relacionadas à todos os atributos
