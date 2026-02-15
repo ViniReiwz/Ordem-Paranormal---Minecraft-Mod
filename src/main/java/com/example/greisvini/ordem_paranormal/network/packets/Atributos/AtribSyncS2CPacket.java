@@ -10,7 +10,7 @@ import java.util.function.Supplier;
 
 import com.example.greisvini.ordem_paranormal.capabilities.attributes.AtributosProvider;
 
-// Mensagem para sincronziar os valores de atributos entre o server e o client
+// Mensagem para sincronziar os valores de UM atributo entre server e client
 public class AtribSyncS2CPacket 
 {
     // Valor (entre 0 e um)

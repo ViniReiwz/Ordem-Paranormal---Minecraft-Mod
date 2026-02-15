@@ -45,7 +45,6 @@ public class OrdemEvents
     }
 
 
-
     // Registra a capability no jogo
     @SubscribeEvent
     public static void onRegisterCapabilities(RegisterCapabilitiesEvent event)
