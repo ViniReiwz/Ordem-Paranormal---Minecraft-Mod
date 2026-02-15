@@ -1,7 +1,6 @@
 package com.example.greisvini.ordem_paranormal.items.ritualisticos;
 
 import com.example.greisvini.ordem_paranormal.blocks.OrdemBlocos;
-import com.example.greisvini.ordem_paranormal.blocks.rituais.TranscendSymbol;
 import com.example.greisvini.ordem_paranormal.blocks.utils.BigRitualBlock;
 import com.example.greisvini.ordem_paranormal.utils.OrdemTags;
 
@@ -18,7 +17,6 @@ import net.minecraft.world.level.block.LevelEvent;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.core.Direction;
-import net.minecraft.world.level.block.state.BlockState;
 
 /*
  * Item do giz branco, utilizado para desenhar o símbolo de transcendência no chão
