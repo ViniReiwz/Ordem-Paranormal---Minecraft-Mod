@@ -1,14 +1,44 @@
 {
     "variants":
     {
-        "grid_part=0": {"model": "ordem_paranormal:block/transcend_upper_left"},
-        "grid_part=1": {"model": "ordem_paranormal:block/transcend_upper_center"},
-        "grid_part=2": {"model": "ordem_paranormal:block/transcend_upper_right"},
-        "grid_part=3": {"model": "ordem_paranormal:block/transcend_middle_left"},
-        "grid_part=4": {"model": "ordem_paranormal:block/transcend_middle_center"},
-        "grid_part=5": {"model": "ordem_paranormal:block/transcend_middle_right"},
-        "grid_part=6": {"model": "ordem_paranormal:block/transcend_lower_left"},
-        "grid_part=7": {"model": "ordem_paranormal:block/transcend_lower_center"},
-        "grid_part=8": {"model": "ordem_paranormal:block/transcend_lower_right"}
+        "grid_part=0,facing=north": {"model": "ordem_paranormal:block/transcend_upper_left", "y": 0},
+        "grid_part=1,facing=north": {"model": "ordem_paranormal:block/transcend_upper_center", "y": 0},
+        "grid_part=2,facing=north": {"model": "ordem_paranormal:block/transcend_upper_right", "y": 0},
+        "grid_part=3,facing=north": {"model": "ordem_paranormal:block/transcend_middle_left", "y": 0},
+        "grid_part=4,facing=north": {"model": "ordem_paranormal:block/transcend_middle_center", "y": 0},
+        "grid_part=5,facing=north": {"model": "ordem_paranormal:block/transcend_middle_right", "y": 0},
+        "grid_part=6,facing=north": {"model": "ordem_paranormal:block/transcend_lower_left", "y": 0},
+        "grid_part=7,facing=north": {"model": "ordem_paranormal:block/transcend_lower_center", "y": 0},
+        "grid_part=8,facing=north": {"model": "ordem_paranormal:block/transcend_lower_right", "y": 0},
+
+        "grid_part=0,facing=east": {"model": "ordem_paranormal:block/transcend_upper_left", "y": 90},
+        "grid_part=1,facing=east": {"model": "ordem_paranormal:block/transcend_upper_center", "y": 90},
+        "grid_part=2,facing=east": {"model": "ordem_paranormal:block/transcend_upper_right", "y": 90},
+        "grid_part=3,facing=east": {"model": "ordem_paranormal:block/transcend_middle_left", "y": 90},
+        "grid_part=4,facing=east": {"model": "ordem_paranormal:block/transcend_middle_center", "y": 90},
+        "grid_part=5,facing=east": {"model": "ordem_paranormal:block/transcend_middle_right", "y": 90},
+        "grid_part=6,facing=east": {"model": "ordem_paranormal:block/transcend_lower_left", "y": 90},
+        "grid_part=7,facing=east": {"model": "ordem_paranormal:block/transcend_lower_center", "y": 90},
+        "grid_part=8,facing=east": {"model": "ordem_paranormal:block/transcend_lower_right", "y": 90},
+
+        "grid_part=0,facing=south": {"model": "ordem_paranormal:block/transcend_upper_left", "y": 180},
+        "grid_part=1,facing=south": {"model": "ordem_paranormal:block/transcend_upper_center", "y": 180},
+        "grid_part=2,facing=south": {"model": "ordem_paranormal:block/transcend_upper_right", "y": 180},
+        "grid_part=3,facing=south": {"model": "ordem_paranormal:block/transcend_middle_left", "y": 180},
+        "grid_part=4,facing=south": {"model": "ordem_paranormal:block/transcend_middle_center", "y": 180},
+        "grid_part=5,facing=south": {"model": "ordem_paranormal:block/transcend_middle_right", "y": 180},
+        "grid_part=6,facing=south": {"model": "ordem_paranormal:block/transcend_lower_left", "y": 180},
+        "grid_part=7,facing=south": {"model": "ordem_paranormal:block/transcend_lower_center", "y": 180},
+        "grid_part=8,facing=south": {"model": "ordem_paranormal:block/transcend_lower_right", "y": 180},
+
+        "grid_part=0,facing=west": {"model": "ordem_paranormal:block/transcend_upper_left", "y": 270},
+        "grid_part=1,facing=west": {"model": "ordem_paranormal:block/transcend_upper_center", "y": 270},
+        "grid_part=2,facing=west": {"model": "ordem_paranormal:block/transcend_upper_right", "y": 270},
+        "grid_part=3,facing=west": {"model": "ordem_paranormal:block/transcend_middle_left", "y": 270},
+        "grid_part=4,facing=west": {"model": "ordem_paranormal:block/transcend_middle_center", "y": 270},
+        "grid_part=5,facing=west": {"model": "ordem_paranormal:block/transcend_middle_right", "y": 270},
+        "grid_part=6,facing=west": {"model": "ordem_paranormal:block/transcend_lower_left", "y": 270},
+        "grid_part=7,facing=west": {"model": "ordem_paranormal:block/transcend_lower_center", "y": 270},
+        "grid_part=8,facing=west": {"model": "ordem_paranormal:block/transcend_lower_right", "y": 270}
     }
 }
