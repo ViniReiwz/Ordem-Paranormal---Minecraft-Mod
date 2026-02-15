@@ -3,6 +3,7 @@ package com.example.greisvini.ordem_paranormal.network;
 import com.example.greisvini.ordem_paranormal.OrdemParanormal;
 import com.example.greisvini.ordem_paranormal.network.packets.Atributos.AtribSyncS2CPacket;
 import com.example.greisvini.ordem_paranormal.network.packets.Atributos.ChangeAtribC2SPacket;
+import com.example.greisvini.ordem_paranormal.network.packets.Atributos.AtribSyncAllS2CPacket;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.network.NetworkDirection;
@@ -40,11 +41,18 @@ public class OrdemMessages
         .consumerMainThread(ChangeAtribC2SPacket::handle)
         .add();
 
-        // Sincroniza os atributos entre server e client
+        // Sincroniza UM atributo entre server e client
         net.messageBuilder(AtribSyncS2CPacket.class, id(),NetworkDirection.PLAY_TO_CLIENT)
         .decoder(AtribSyncS2CPacket::new)
         .encoder(AtribSyncS2CPacket::toBytes)
         .consumerMainThread(AtribSyncS2CPacket::handle)
+        .add();
+
+        // Sincroniza TODOS os atributos entre server e client
+        net.messageBuilder(AtribSyncAllS2CPacket.class, id(),NetworkDirection.PLAY_TO_CLIENT)
+        .decoder(AtribSyncAllS2CPacket::new)
+        .encoder(AtribSyncAllS2CPacket::toBytes)
+        .consumerMainThread(AtribSyncAllS2CPacket::handle)
         .add();
     }
 
