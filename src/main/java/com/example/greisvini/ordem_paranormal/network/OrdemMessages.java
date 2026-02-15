@@ -1,8 +1,8 @@
 package com.example.greisvini.ordem_paranormal.network;
 
 import com.example.greisvini.ordem_paranormal.OrdemParanormal;
-import com.example.greisvini.ordem_paranormal.network.packets.AtribSyncS2CPacket;
-import com.example.greisvini.ordem_paranormal.network.packets.ChangeAtribC2SPacket;
+import com.example.greisvini.ordem_paranormal.network.packets.Atributos.AtribSyncS2CPacket;
+import com.example.greisvini.ordem_paranormal.network.packets.Atributos.ChangeAtribC2SPacket;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.network.NetworkDirection;

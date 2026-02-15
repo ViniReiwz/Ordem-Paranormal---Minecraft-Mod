@@ -2,10 +2,12 @@ package com.example.greisvini.ordem_paranormal.events;
 
 import com.example.greisvini.ordem_paranormal.OrdemParanormal;
 import com.example.greisvini.ordem_paranormal.capabilities.attributes.AtributosProvider;
+import com.example.greisvini.ordem_paranormal.client.UI.OrdemMainMenu;
 import com.example.greisvini.ordem_paranormal.network.OrdemMessages;
-import com.example.greisvini.ordem_paranormal.network.packets.ChangeAtribC2SPacket;
+import com.example.greisvini.ordem_paranormal.network.packets.Atributos.ChangeAtribC2SPacket;
 import com.example.greisvini.ordem_paranormal.utils.OrdemKeyBindings;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;
@@ -29,6 +31,12 @@ public class ClientEvents
             {
                 // Envia a mensagem para aumentar um atributo (Placeholder para testar o sistema)
                 OrdemMessages.sendToServer(new ChangeAtribC2SPacket(1,"FOR"));
+            }
+
+            // Abre o menu do mod
+            else if(OrdemKeyBindings.OPEN_MENU_KEY.consumeClick())
+            {
+                Minecraft.getInstance().setScreen(new OrdemMainMenu());
             }
         }
 
@@ -55,6 +63,7 @@ public class ClientEvents
         public static void onKeyRegister(RegisterKeyMappingsEvent reg_event)
         {
             reg_event.register(OrdemKeyBindings.CAST_KEY);
+            reg_event.register(OrdemKeyBindings.OPEN_MENU_KEY); 
         }
     }
 

@@ -1,4 +1,4 @@
-package com.example.greisvini.ordem_paranormal.network.packets;
+package com.example.greisvini.ordem_paranormal.network.packets.Atributos;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
@@ -44,19 +44,24 @@ public class AtribSyncS2CPacket
         NetworkEvent.Context context = supplier.get();
         context.enqueueWork(() -> 
         {
-            // Tudo aqui está no cliente !!
-            LocalPlayer p = Minecraft.getInstance().player;
-            p.getCapability(AtributosProvider.ATRIBUTOS).ifPresent(attr ->
+            if(context.getDirection().getReceptionSide().isClient())
             {
-                attr.set(final_val, final_type);
-            });
+                // Tudo aqui está no cliente !!
+                LocalPlayer p = Minecraft.getInstance().player;
+                p.getCapability(AtributosProvider.ATRIBUTOS).ifPresent(attr ->
+                {
+                    attr.set(final_val, final_type);
+                });
 
-            p.sendSystemMessage(Component.literal(final_type + ": " + final_val));
+                p.sendSystemMessage(Component.literal(final_type + ": " + final_val));
+
+                // Confirma que lidou com o pacote
+                context.setPacketHandled(true);
+            }
+            else { context.setPacketHandled(false); }
             
         });
-
-        // Confirma que o packet foi tratado
-        context.setPacketHandled(true);
-        return true;
+        
+        return context.getPacketHandled();
     }
 }
