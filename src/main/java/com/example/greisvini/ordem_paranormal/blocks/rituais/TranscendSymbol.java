@@ -1,6 +1,7 @@
 package com.example.greisvini.ordem_paranormal.blocks.rituais;
 
 import com.example.greisvini.ordem_paranormal.blocks.utils.BigRitualBlock;
+import com.example.greisvini.ordem_paranormal.capabilities.NEX.NEXProvider;
 import com.example.greisvini.ordem_paranormal.network.OrdemMessages;
 import com.example.greisvini.ordem_paranormal.network.packets.NEX.UpNexC2SPacket;
 
@@ -22,14 +23,16 @@ public class TranscendSymbol extends BigRitualBlock
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player,InteractionHand hand, BlockHitResult hit_res) 
     {
-        // Atua apenas no cliente
+
         if(level.isClientSide())
         {
             // verifica se o player está agachado
             if(player.isShiftKeyDown())
             {
-                // Aumenta o nex do jogador
-                OrdemMessages.sendToServer(new UpNexC2SPacket());
+                player.getCapability(NEXProvider.NEX).ifPresent(nex -> 
+                {
+                    if(nex.canLvlUp()){ OrdemMessages.sendToServer(new UpNexC2SPacket()); }
+                });
 
                 return InteractionResult.SUCCESS;
             }
