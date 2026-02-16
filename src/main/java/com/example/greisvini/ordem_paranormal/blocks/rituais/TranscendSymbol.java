@@ -26,12 +26,12 @@ public class TranscendSymbol extends BigRitualBlock
 
         if(level.isClientSide())
         {
-            // verifica se o player está agachado
+            // Verifica se o player está agachado
             if(player.isShiftKeyDown())
             {
                 player.getCapability(NEXProvider.NEX).ifPresent(nex -> 
                 {
-                    if(nex.canLvlUp()){ OrdemMessages.sendToServer(new UpNexC2SPacket()); }
+                    OrdemMessages.sendToServer(new UpNexC2SPacket());
                 });
 
                 return InteractionResult.SUCCESS;
