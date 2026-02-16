@@ -35,7 +35,7 @@ public class OrdemEvents
 
             if(!event.getObject().getCapability(NEXProvider.NEX).isPresent())
             {
-                event.addCapability(new ResourceLocation(OrdemParanormal.MOD_ID, "NEX"), new NEXProvider());
+                event.addCapability(new ResourceLocation(OrdemParanormal.MOD_ID, "nex"), new NEXProvider());
             }
         }
     }

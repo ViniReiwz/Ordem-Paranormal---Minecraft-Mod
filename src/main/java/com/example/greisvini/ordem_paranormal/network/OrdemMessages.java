@@ -5,6 +5,7 @@ import com.example.greisvini.ordem_paranormal.network.packets.Atributos.AtribSyn
 import com.example.greisvini.ordem_paranormal.network.packets.Atributos.ChangeAtribC2SPacket;
 import com.example.greisvini.ordem_paranormal.network.packets.NEX.NexSyncS2CPacket;
 import com.example.greisvini.ordem_paranormal.network.packets.NEX.UpNexC2SPacket;
+import com.example.greisvini.ordem_paranormal.network.packets.NEX.Exp.ExpIncreaseC2SPacket;
 import com.example.greisvini.ordem_paranormal.network.packets.Atributos.AtribSyncAllS2CPacket;
 
 import net.minecraft.resources.ResourceLocation;
@@ -69,6 +70,13 @@ public class OrdemMessages
         .decoder(NexSyncS2CPacket::new)
         .encoder(NexSyncS2CPacket::toBytes)
         .consumerMainThread(NexSyncS2CPacket::handle)
+        .add();
+
+        // Incrementa na experiência dp player
+        net.messageBuilder(ExpIncreaseC2SPacket.class, id(),NetworkDirection.PLAY_TO_SERVER)
+        .decoder(ExpIncreaseC2SPacket::new)
+        .encoder(ExpIncreaseC2SPacket::toBytes)
+        .consumerMainThread(ExpIncreaseC2SPacket::handle)
         .add();
     }
 

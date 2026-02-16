@@ -4,7 +4,7 @@ import com.example.greisvini.ordem_paranormal.OrdemParanormal;
 import com.example.greisvini.ordem_paranormal.capabilities.attributes.AtributosProvider;
 import com.example.greisvini.ordem_paranormal.client.UI.OrdemMainMenu;
 import com.example.greisvini.ordem_paranormal.network.OrdemMessages;
-import com.example.greisvini.ordem_paranormal.network.packets.Atributos.ChangeAtribC2SPacket;
+import com.example.greisvini.ordem_paranormal.network.packets.NEX.Exp.ExpIncreaseC2SPacket;
 import com.example.greisvini.ordem_paranormal.utils.OrdemKeyBindings;
 
 import net.minecraft.client.Minecraft;
@@ -30,7 +30,7 @@ public class ClientEvents
             if(OrdemKeyBindings.CAST_KEY.consumeClick())
             {
                 // Envia a mensagem para aumentar um atributo (Placeholder para testar o sistema)
-                OrdemMessages.sendToServer(new ChangeAtribC2SPacket(1,"FOR"));
+                OrdemMessages.sendToServer(new ExpIncreaseC2SPacket(10));
             }
 
             // Abre o menu do mod

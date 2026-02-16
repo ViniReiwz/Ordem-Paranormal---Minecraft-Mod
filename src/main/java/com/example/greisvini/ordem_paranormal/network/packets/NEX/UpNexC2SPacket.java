@@ -9,7 +9,7 @@ import java.util.function.Supplier;
 import com.example.greisvini.ordem_paranormal.capabilities.NEX.NEXProvider;
 import com.example.greisvini.ordem_paranormal.network.OrdemMessages;
 
-// Mensagem para mudar valor de atributo in-game
+// Mensagem para aumentar no NEX do player
 public class UpNexC2SPacket 
 {
     public UpNexC2SPacket()
@@ -38,11 +38,11 @@ public class UpNexC2SPacket
                 ServerPlayer player = context.getSender();
                 if(player == null){return;}
 
-                // Incremente em 'value' o atributo do tipo 'type'
+                // Incrementa o valor do nex
                 player.getCapability(NEXProvider.NEX).ifPresent(nex ->
                 {
                     nex.upNex();
-                    OrdemMessages.sendToPlayer(new NexSyncS2CPacket(), player);
+                    OrdemMessages.sendToPlayer(new NexSyncS2CPacket(nex.getNex()), player);
                 });;
             }
 

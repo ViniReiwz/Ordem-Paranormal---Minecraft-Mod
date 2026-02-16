@@ -8,20 +8,26 @@ import java.util.function.Supplier;
 
 import com.example.greisvini.ordem_paranormal.capabilities.NEX.NEXProvider;
 
-// Mensagem para mudar valor de atributo in-game
+// Mensagem para sincronizar valor de NEX entre server e client
 public class NexSyncS2CPacket 
 {
-    public NexSyncS2CPacket()
+
+    private int final_nex;
+
+    public NexSyncS2CPacket(int final_nex)
     {
+        this.final_nex = final_nex;
     }
 
     
     public NexSyncS2CPacket(FriendlyByteBuf buf)
     {
+        this.final_nex = buf.readInt();
     }
 
     public void toBytes(FriendlyByteBuf buf)
     {
+        buf.writeInt(this.final_nex);
     }
 
     public boolean handle(Supplier<NetworkEvent.Context> supplier)
@@ -33,14 +39,14 @@ public class NexSyncS2CPacket
             
             if(context.getDirection().getReceptionSide().isClient())
             {
-                // Tudo feito aqui está no servidor !!!
+                // Tudo feito aqui está no client !!!
                 ServerPlayer player = context.getSender();
                 if(player == null){return;}
 
-                // Incremente em 'value' o atributo do tipo 'type'
+                // Sincroniza o nex do server com o client
                 player.getCapability(NEXProvider.NEX).ifPresent(nex ->
                 {
-                    nex.upNex();
+                    nex.setNex(this.final_nex);
                 });;
             }
 

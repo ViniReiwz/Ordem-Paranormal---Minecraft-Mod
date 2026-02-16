@@ -1,6 +1,7 @@
 package com.example.greisvini.ordem_paranormal.network.packets.NEX.Exp;
 
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkEvent;
 
@@ -8,7 +9,7 @@ import java.util.function.Supplier;
 
 import com.example.greisvini.ordem_paranormal.capabilities.NEX.NEXProvider;
 
-// Mensagem para mudar valor de atributo in-game
+// Mensagem para incrementar experiência in-game
 public class ExpIncreaseC2SPacket 
 {
 
@@ -47,6 +48,7 @@ public class ExpIncreaseC2SPacket
                 player.getCapability(NEXProvider.NEX).ifPresent(nex ->
                 {
                     nex.increaseXp(this.increase_val);
+                    player.sendSystemMessage(Component.literal("NEX: " + nex.getNex() + "%, xp: " + nex.getXp() + " xp need: " + nex.getXpNeeded()));
                 });;
             }
 

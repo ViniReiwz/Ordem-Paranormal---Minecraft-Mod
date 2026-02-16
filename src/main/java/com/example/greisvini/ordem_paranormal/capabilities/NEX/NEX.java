@@ -33,6 +33,10 @@ public class NEX
 
     }
 
+    public void setNex(int nex)
+    {
+        this.nex = nex;
+    }
 
     public int getNex()
     {
