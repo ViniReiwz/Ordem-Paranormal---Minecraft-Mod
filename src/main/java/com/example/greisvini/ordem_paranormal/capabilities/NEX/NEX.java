@@ -17,12 +17,15 @@ public class NEX
     {
         // Subtrai o xp necessário pra subir de nex
         this.ordem_xp -= this.getXpNeeded();
+        if(this.ordem_xp < 0){ this.ordem_xp = 0; }
 
         // Incrementa o nex de 5 em 5 (%)
         this.nex += 5;
 
         // Maximo == 99%
         if(this.nex > MAX){this.nex = MAX;}
+
+        this.can_level_up = false;
     }
 
     public void increaseXp(int val)
@@ -51,6 +54,11 @@ public class NEX
     public int getXp()
     {
         return this.ordem_xp;
+    }
+
+    public void setCanLvlUp(boolean can)
+    {
+        this.can_level_up = can;
     }
 
     public boolean canLvlUp()

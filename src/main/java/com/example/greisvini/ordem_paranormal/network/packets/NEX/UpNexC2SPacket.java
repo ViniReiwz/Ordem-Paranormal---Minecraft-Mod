@@ -41,8 +41,13 @@ public class UpNexC2SPacket
                 // Incrementa o valor do nex
                 player.getCapability(NEXProvider.NEX).ifPresent(nex ->
                 {
-                    nex.upNex();
-                    OrdemMessages.sendToPlayer(new NexSyncS2CPacket(nex.getNex()), player);
+                    if(nex.canLvlUp())
+                    {
+                        nex.upNex();
+                        OrdemMessages.sendToPlayer(new NexSyncS2CPacket(nex.getNex()), player);
+                    }
+
+                    context.setPacketHandled(true);
                 });;
             }
 
