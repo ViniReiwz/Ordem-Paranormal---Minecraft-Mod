@@ -3,6 +3,8 @@ package com.example.greisvini.ordem_paranormal.network;
 import com.example.greisvini.ordem_paranormal.OrdemParanormal;
 import com.example.greisvini.ordem_paranormal.network.packets.Atributos.AtribSyncS2CPacket;
 import com.example.greisvini.ordem_paranormal.network.packets.Atributos.ChangeAtribC2SPacket;
+import com.example.greisvini.ordem_paranormal.network.packets.NEX.NexSyncS2CPacket;
+import com.example.greisvini.ordem_paranormal.network.packets.NEX.UpNexC2SPacket;
 import com.example.greisvini.ordem_paranormal.network.packets.Atributos.AtribSyncAllS2CPacket;
 
 import net.minecraft.resources.ResourceLocation;
@@ -53,6 +55,20 @@ public class OrdemMessages
         .decoder(AtribSyncAllS2CPacket::new)
         .encoder(AtribSyncAllS2CPacket::toBytes)
         .consumerMainThread(AtribSyncAllS2CPacket::handle)
+        .add();
+
+        // Sincroniza TODOS os atributos entre server e client
+        net.messageBuilder(UpNexC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
+        .decoder(UpNexC2SPacket::new)
+        .encoder(UpNexC2SPacket::toBytes)
+        .consumerMainThread(UpNexC2SPacket::handle)
+        .add();
+
+        // Sincroniza o NEX entre server e client
+        net.messageBuilder(NexSyncS2CPacket.class, id(),NetworkDirection.PLAY_TO_CLIENT)
+        .decoder(NexSyncS2CPacket::new)
+        .encoder(NexSyncS2CPacket::toBytes)
+        .consumerMainThread(NexSyncS2CPacket::handle)
         .add();
     }
 

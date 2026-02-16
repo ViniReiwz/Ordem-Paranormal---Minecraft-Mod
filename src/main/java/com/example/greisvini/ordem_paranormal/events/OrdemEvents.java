@@ -1,6 +1,8 @@
 package com.example.greisvini.ordem_paranormal.events;
 
 import com.example.greisvini.ordem_paranormal.OrdemParanormal;
+import com.example.greisvini.ordem_paranormal.capabilities.NEX.NEX;
+import com.example.greisvini.ordem_paranormal.capabilities.NEX.NEXProvider;
 import com.example.greisvini.ordem_paranormal.capabilities.attributes.Atributos;
 import com.example.greisvini.ordem_paranormal.capabilities.attributes.AtributosProvider;
 import com.example.greisvini.ordem_paranormal.network.OrdemMessages;
@@ -30,6 +32,11 @@ public class OrdemEvents
             {
                 event.addCapability(new ResourceLocation(OrdemParanormal.MOD_ID,"atributos"), new AtributosProvider());
             }
+
+            if(!event.getObject().getCapability(NEXProvider.NEX).isPresent())
+            {
+                event.addCapability(new ResourceLocation(OrdemParanormal.MOD_ID, "NEX"), new NEXProvider());
+            }
         }
     }
 
@@ -39,9 +46,19 @@ public class OrdemEvents
     {
         if(event.isWasDeath())
         {
-            event.getOriginal().getCapability(AtributosProvider.ATRIBUTOS).ifPresent(old -> {
-                event.getEntity().getCapability(AtributosProvider.ATRIBUTOS).ifPresent(news -> {
-                    news.copyFrom(old);
+            event.getOriginal().getCapability(AtributosProvider.ATRIBUTOS).ifPresent(old_attr -> 
+            {
+                event.getEntity().getCapability(AtributosProvider.ATRIBUTOS).ifPresent(new_attr -> 
+                {
+                    new_attr.copyFrom(old_attr);
+                });
+            });
+
+            event.getOriginal().getCapability(NEXProvider.NEX).ifPresent(old_nex -> 
+            {
+                event.getEntity().getCapability(NEXProvider.NEX).ifPresent(new_nex ->
+                {
+                    new_nex.copyFrom(old_nex);
                 });
             });
         }
@@ -76,5 +93,6 @@ public class OrdemEvents
     public static void onRegisterCapabilities(RegisterCapabilitiesEvent event)
     {
         event.register(Atributos.class);
+        event.register(NEX.class);
     }
 }
