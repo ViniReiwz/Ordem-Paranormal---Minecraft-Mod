@@ -72,7 +72,7 @@ public class OrdemMessages
         .consumerMainThread(NexSyncS2CPacket::handle)
         .add();
 
-        // Incrementa na experiência dp player
+        // Incrementa na experiência do player
         net.messageBuilder(ExpIncreaseC2SPacket.class, id(),NetworkDirection.PLAY_TO_SERVER)
         .decoder(ExpIncreaseC2SPacket::new)
         .encoder(ExpIncreaseC2SPacket::toBytes)

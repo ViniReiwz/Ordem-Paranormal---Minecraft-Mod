@@ -14,9 +14,12 @@ public class NEX
 
     public void upNex()
     {
+        // Subtrai o xp necessário pra subir de nex
+        this.ordem_xp -= this.getXpNeeded();
+
         // Incrementa o nex de 5 em 5 (%)
         this.nex += 5;
-
+        
         // Maximo == 99%
         if(this.nex > MAX){this.nex = MAX;}
     }
