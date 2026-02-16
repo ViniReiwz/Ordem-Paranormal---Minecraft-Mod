@@ -31,7 +31,8 @@ public class TranscendSymbol extends BigRitualBlock
             {
                 player.getCapability(NEXProvider.NEX).ifPresent(nex -> 
                 {
-                    OrdemMessages.sendToServer(new UpNexC2SPacket());
+                    if(state.getValue(BigRitualBlock.GRID_PARTS) == BigRitualBlock.MIDDLE_POS)
+                    { OrdemMessages.sendToServer(new UpNexC2SPacket()); }
                 });
 
                 return InteractionResult.SUCCESS;
