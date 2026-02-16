@@ -44,7 +44,6 @@ public class GroundDisplayBlock extends Block
         {
             level.removeBlock(pos,  false);
             level.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, pos, Block.getId(state));
-
         }
     }
 
